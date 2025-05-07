@@ -56,6 +56,7 @@ public class NewSwitch {
 		   default: yield 0;
 		   };
 		   
+		   
 		   if(result > 0) {
 			   System.out.println("The result is " + result);
 		   }else {
@@ -64,14 +65,19 @@ public class NewSwitch {
 		   
 		   System.out.println("Do you want to continue Y/N : ");
 		   char choose = userInput.next().charAt(0);
+		   userInput.close();
 		   if(choose == 'Y') {
 			   continue;
 		   }
 		   else {
 			   break;
+			  
 		   }
 		   
+		   
+		  
 	 }
+	 
 	  
 		
 //		Scanner userInput = new Scanner(System.in);
