@@ -49,16 +49,27 @@ public class MaxFinder {
 			
 		}
 		
-		String max(String oneS,String twoS) {
-			String maxString="";
-		    List<String> arrayList = new ArrayList(Arrays.asList(oneS));
+		char max(String oneS,String twoS) {
+			char maxChar=' ';
+		    List<String> arrayList = new ArrayList<String>(Arrays.asList(oneS));
 		    arrayList.addAll(Arrays.asList(twoS));
 		    arrayList.toArray();
 		    for(String cha : arrayList) {
-		    	System.out.println(cha);
+		    	for(int i =1; i < cha.length() ; i++) {
+		    		char temCha = cha.charAt(0);
+		    		if( cha.charAt(i) > temCha) {
+		    			maxChar=cha.charAt(i);
+		    		}
+		    		else maxChar = temCha;
+		    		
+		    		
+		    	}
 		    	
 		    }
-		    return maxString;
+		    
+		    System.out.println(maxChar);
+		    return maxChar;
+		  
 		}
 	
 
