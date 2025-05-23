@@ -2,6 +2,7 @@ package prevent_inheritance;
 
 public class HackZoe {
 	
+	@SuppressWarnings("unused")
 	private String bankAccount;
 	
 	

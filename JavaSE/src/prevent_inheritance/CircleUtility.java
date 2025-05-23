@@ -8,6 +8,7 @@ final public class CircleUtility {
 		return PI*r*r;
    }
 	
+	@SuppressWarnings("unused")
 	private CircleUtility() {
 		
 	}

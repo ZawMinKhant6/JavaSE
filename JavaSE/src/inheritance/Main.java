@@ -5,6 +5,7 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
+		 @SuppressWarnings("unused")
 		 Programmer programmer = new Programmer();
 		
 //		WebDeveloper mgmg = new WebDeveloper();
