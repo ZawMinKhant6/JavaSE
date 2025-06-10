@@ -8,6 +8,17 @@ import model.MovieDAO;
 public class MovieController {
 	private final MovieDAO movieDAO = new MovieDAO();
 	
+	
+    public String updateMovie(Movie movie) {
+		
+		if(movie.getId() == null) {
+			return "Update Movie id is null";
+		}
+		
+		return movieDAO.updateMovie(movie) ? "Movie Updated Successfully" : "Update Operation Fail";
+		
+	}
+	
 	public List<Movie> getAllMovie() {
 	  List<Movie> movieList=movieDAO.getAllMovie();
 	  return movieList;

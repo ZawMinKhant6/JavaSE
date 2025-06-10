@@ -11,6 +11,86 @@ public class MovieView {
 	
 	private final MovieController  movieController = new MovieController();
 	
+	
+	public void showUpdateResult(Scanner userInput) {
+		System.out.println("Enter The movie Id You wanted to update");
+		Long movieId = userInput.nextLong();
+		Movie updatedMovie = movieController.getMovieById(movieId);
+		System.out.println("Updated Movie Data");
+		showMovieData(updatedMovie);
+		
+		while(true) {
+			System.out.println("1.title 2.genre 3.durationByMins 4.imdbRating 5.rtRating 6.rRated 7.releasedDate 8.description");
+			int operation = userInput.nextInt();
+			
+			switch (operation) {
+			case 1 ->{
+				System.out.println("Title : ");
+				userInput.nextLine();
+				updatedMovie.setTitle(userInput.nextLine());
+			}
+			
+			case 2 ->{
+				System.out.println("Genre : ");
+				userInput.nextLine();
+				updatedMovie.setGenre(userInput.nextLine());
+			}
+			
+			case 3 -> {
+				System.out.println("Duration By Min : ");
+				updatedMovie.setDurationByMin(userInput.nextInt());
+			}
+			
+			case 4 ->{
+				System.out.println("imdb Rating : ");
+				updatedMovie.setImdbRating(userInput.nextDouble());
+			}
+			
+			case 5 -> {
+				System.out.println("Rotten Tomatoes : ");
+				
+				updatedMovie.setrRating(userInput.nextDouble());
+				
+			}
+			
+			case 6 ->{
+				System.out.println("rRated : yes - y or no - n ");
+				updatedMovie.setrRated(userInput.next().charAt(0) == 'y' );
+				userInput.nextLine();
+			}
+			
+			case 7 ->{
+				System.out.println("Released Date : yyyy-MM-dd ");
+				updatedMovie.setReleaseDate(LocalDate.parse(userInput.next()));
+				userInput.nextLine();
+			}
+			
+			case 8 -> {
+				System.out.println("description : ");
+				userInput.nextLine();
+				updatedMovie.setDescription(userInput.nextLine());
+			}
+			
+			default ->
+			throw new IllegalArgumentException("Unexpected value: " + operation);
+			}
+			
+			System.out.println("Continue Update ? yes-y or no-n");
+			char decision = userInput.next().charAt(0);
+			
+			if(decision == 'n') {
+				
+				break;
+			}
+		}
+		
+		System.out.println("### Movie Update Result ###");
+		System.out.println(movieController.updateMovie(updatedMovie));
+		
+		
+	}
+
+	
 	public void listMovie(List<Movie> movieList) {
 			
 			

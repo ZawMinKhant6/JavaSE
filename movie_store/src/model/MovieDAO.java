@@ -31,6 +31,40 @@ public class MovieDAO {
 		}
 	}
 	
+	public boolean updateMovie(Movie movie) {
+		 boolean updateOk = false;
+		 connection = DBConnection.getConnection();
+		 
+		 try {
+			pStmt= connection.prepareStatement("UPDATE MOVIE SET title = ?, genre = ?, durationByMin = ?, imdbRating = ?, rtRating = ?, rRated = ?, releasedDate = ?, description = ? WHERE id = ? ;  ");
+			pStmt.setString(1, movie.getTitle());
+			pStmt.setString(2, movie.getGenre());
+			pStmt.setInt(3, movie.getDurationByMin());
+			pStmt.setDouble(4, movie.getImdbRating());
+			pStmt.setDouble(5, movie.getrRating());
+			pStmt.setBoolean(6, movie.getrRated());
+			pStmt.setDate(7, Date.valueOf(movie.getReleaseDate()));
+			pStmt.setString(8, movie.getDescription());
+			pStmt.setLong(9, movie.getId());
+			
+			int rowEffected = pStmt.executeUpdate();
+			
+			if(rowEffected > 0) {
+				updateOk = true;
+			}
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			closeConnection();
+		}
+		 
+		 return updateOk;
+
+	}		
+	
 	public List<Movie> getAllMovie(){
 		List<Movie> movieList = new ArrayList<Movie>();
 		connection = DBConnection.getConnection();

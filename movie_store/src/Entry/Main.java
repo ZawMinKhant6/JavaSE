@@ -34,6 +34,7 @@ public class Main {
 				}
 			}
 			case 3-> movieView.showCreateResult(userInput);
+			case 4 -> movieView.showUpdateResult(userInput);
 			case 5-> movieView.deleteMovie(userInput);
 			
 			default ->
